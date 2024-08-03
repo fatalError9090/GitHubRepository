@@ -42,12 +42,14 @@ Here is the branching strategy for this project:
 
 #### Network Layer
 
-- `GitHubService`: A network service layer has been implemented to handle the fetching of repository data from GitHub.
+- `GitHubService`: A network service layer has been implemented to handle the fetching of repository data from GitHub using Combine.
 
 - `GitHubServiceProtocol`: A protocol that outlines the interface for GitHubService.
 ```swift
-protocol GitHubServiceProtocol {
-  func fetchRepositories(for user: String) async throws -> [Repository]
+protocol GitHubServiceProtocol: AnyObject {
+  var repositoriesPublisher: AnyPublisher<[Repository], NetworkError> { get }
+
+  func fetchRepositories(for user: String)
 }
 ```
 
@@ -57,6 +59,7 @@ enum NetworkError: Error {
   case invalidURL
   case emptyUser
   case decodingFailed
+  case unknown(String)
 }
 ```
 
