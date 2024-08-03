@@ -30,3 +30,8 @@ A description of the project folder structure:
   - Contains all shared code and resources that can be used across different features of the app.
 
 This structure ensures a modular approach, where each screen has its own set of Model, View, and ViewModel files, making the codebase easier to navigate and maintain. Shared resources are centralized, promoting code reuse and reducing redundancy.
+
+## Branching Strategy
+
+Here is the branching strategy for this project:
+![Branching Strategy](branching_strategy.png)
