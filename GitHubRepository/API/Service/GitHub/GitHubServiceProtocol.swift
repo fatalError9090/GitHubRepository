@@ -1,5 +1,8 @@
+import Combine
 import Foundation
 
-protocol GitHubServiceProtocol {
-  func fetchRepositories(for user: String) async throws -> [Repository]
+protocol GitHubServiceProtocol: AnyObject {
+  var repositoriesPublisher: AnyPublisher<[Repository], NetworkError> { get }
+
+  func fetchRepositories(for user: String)
 }
