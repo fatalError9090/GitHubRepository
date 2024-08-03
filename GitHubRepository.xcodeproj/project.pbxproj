@@ -97,9 +97,10 @@
 		9392A7B92C5DEBC60015DD01 /* GitHubRepository */ = {
 			isa = PBXGroup;
 			children = (
-				9392A7BA2C5DEBC60015DD01 /* AppDelegate.swift */,
-				9392A7BC2C5DEBC60015DD01 /* SceneDelegate.swift */,
-				9392A7BE2C5DEBC60015DD01 /* ReposViewController.swift */,
+				9392A7F12C5DF0E10015DD01 /* App */,
+				9392A7F02C5DF0CE0015DD01 /* API */,
+				9392A7EF2C5DF0B30015DD01 /* Screens */,
+				9392A7F32C5DF1020015DD01 /* Shared */,
 				9392A7C32C5DEBC90015DD01 /* Assets.xcassets */,
 				9392A7C52C5DEBC90015DD01 /* LaunchScreen.storyboard */,
 				9392A7C82C5DEBC90015DD01 /* Info.plist */,
@@ -122,6 +123,85 @@
 				9392A7DD2C5DEBC90015DD01 /* GitHubRepositoryUITestsLaunchTests.swift */,
 			);
 			path = GitHubRepositoryUITests;
+			sourceTree = "<group>";
+		};
+		9392A7EA2C5DF02A0015DD01 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				9392A7EE2C5DF07E0015DD01 /* ViewController */,
+				9392A7ED2C5DF0780015DD01 /* ViewModel */,
+				9392A7EC2C5DF0710015DD01 /* Model */,
+				9392A7EB2C5DF0620015DD01 /* View */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		9392A7EB2C5DF0620015DD01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9392A7EC2C5DF0710015DD01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9392A7ED2C5DF0780015DD01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9392A7EE2C5DF07E0015DD01 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9392A7BE2C5DEBC60015DD01 /* ReposViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9392A7EF2C5DF0B30015DD01 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9392A7EA2C5DF02A0015DD01 /* Repositories */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9392A7F02C5DF0CE0015DD01 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9392A7F22C5DF0EC0015DD01 /* Service */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		9392A7F12C5DF0E10015DD01 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9392A7BA2C5DEBC60015DD01 /* AppDelegate.swift */,
+				9392A7BC2C5DEBC60015DD01 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9392A7F22C5DF0EC0015DD01 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9392A7F32C5DF1020015DD01 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
