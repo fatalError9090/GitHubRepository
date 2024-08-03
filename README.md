@@ -35,3 +35,48 @@ This structure ensures a modular approach, where each screen has its own set of 
 
 Here is the branching strategy for this project:
 ![Branching Strategy](branching_strategy.png)
+
+## Features
+
+### 1. Repositories
+
+#### Network Layer
+
+- `GitHubService`: A network service layer has been implemented to handle the fetching of repository data from GitHub.
+
+- `GitHubServiceProtocol`: A protocol that outlines the interface for GitHubService.
+```swift
+protocol GitHubServiceProtocol {
+  func fetchRepositories(for user: String) async throws -> [Repository]
+}
+```
+
+- `NetworkError`: An enum that defines various error types that can occur during network requests.
+```swift
+enum NetworkError: Error {
+  case invalidURL
+  case emptyUser
+  case decodingFailed
+}
+```
+
+- `GitHubServiceTest`: A unit test class that verifies the functionality of GitHubService.
+```swift
+func testFetchRepositoriesSuccess()
+func testFetchRepositoriesInvalidURL()
+func testFetchRepositoriesEmptyUser()
+func testFetchRepositoriesDecodingError()
+```
+
+#### Model
+- **Repository Model**
+
+A `Repository` model represent the data received from the GitHub API. This model includes properties that map to the JSON structure of the API response.
+```swift
+struct Repository: Codable {
+
+  let id: Int
+  let name: String
+  let description: String?
+}
+```
