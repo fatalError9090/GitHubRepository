@@ -3,6 +3,12 @@
 ## Description
 Build a simple iOS application that fetches and displays a list of repositories for a specific GitHub user
 
+## App Design
+
+
+|  Sample | Final  |
+|---|---|
+| ![Sample](images/GitHubRepositorySample.png) | ![Final](images/GitHubRepository.png)|
 ## MVVM Architecture
 This iOS project implements the MVVM (Model-View-ViewModel) architecture. MVVM separates the app's data (Model), UI (View), and the logic that ties the data to the UI (ViewModel). This approach promotes a clean code structure, making it easier to manage and test. The ViewModel handles data fetching and business logic, ensuring the View remains simple and focused on displaying the UI. This setup enhances code maintainability and scalability.
 
@@ -34,7 +40,10 @@ This structure ensures a modular approach, where each screen has its own set of 
 ## Branching Strategy
 
 Here is the branching strategy for this project:
-![Branching Strategy](branching_strategy.png)
+![Branching Strategy](images/branching_strategy.png)
+
+> The final version for this project's requirements is in `release-candidate-1` and has been merged to `main`.
+> Every new version will be added in a new `release-candidate-x` branch, which will then be merged to `main`.
 
 ## Features
 
