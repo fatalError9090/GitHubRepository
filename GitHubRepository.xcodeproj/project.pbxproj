@@ -27,6 +27,7 @@
 		9392A8292C60318B0015DD01 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8282C60318B0015DD01 /* RepositoryDetailView.swift */; };
 		9392A82C2C6032650015DD01 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A82B2C6032650015DD01 /* RepositoryDetailViewModel.swift */; };
 		9392A82E2C6037920015DD01 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A82D2C6037920015DD01 /* String+Extension.swift */; };
+		9392A8322C6040920015DD01 /* RepositoryDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		9392A8282C60318B0015DD01 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
 		9392A82B2C6032650015DD01 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		9392A82D2C6037920015DD01 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				9392A81E2C5EE0810015DD01 /* ReposViewModelTests.swift */,
+				9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9392A81F2C5EE0810015DD01 /* ReposViewModelTests.swift in Sources */,
+				9392A8322C6040920015DD01 /* RepositoryDetailViewModelTests.swift in Sources */,
 				9392A7FF2C5E0F000015DD01 /* GitHubServiceTests.swift in Sources */,
 				9392A8042C5E0FCA0015DD01 /* URLProtocolMock.swift in Sources */,
 			);
