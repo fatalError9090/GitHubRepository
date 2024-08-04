@@ -68,7 +68,7 @@ private extension ReposViewController {
           self?.contentView.finishLoading()
         case .error(let error):
           self?.contentView.finishLoading()
-          self?.showErrorAlert(message: "Error: \(error.localizedDescription)")
+          self?.showErrorAlert(error: error)
         }
       }
       .store(in: &subscriptions)
@@ -89,7 +89,11 @@ private extension ReposViewController {
     dataSource.apply(snapshot, animatingDifferences: true)
   }
 
-  func showErrorAlert(message: String) {
+  func showErrorAlert(error: ReposViewModelError) {
+    let message: String
+    switch error {
+      case .repositoriesFetch(let networkError): message = networkError.description
+    }
     let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
