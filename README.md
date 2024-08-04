@@ -83,3 +83,102 @@ struct Repository: Codable {
   let description: String?
 }
 ```
+
+#### ViewModel
+- **Repository ViewModel**
+
+`ReposViewModel` to fetch repository data and manage state using Combine. Containing three `@Publishers` for updating and managing the state of the UI. 
+```swift
+@MainActor
+final class ReposViewModel: ObservableObject {
+
+  .. 
+
+  @Published private(set) var repositories: [Repository] = []
+  @Published private(set) var state: ReposViewModelState = .loading
+  @Published private(set) var userName: String = "Apple"
+
+  init(reposService: GitHubServiceProtocol) { .. }
+
+  func fetchRepositories(for user: String) { .. }
+
+  ..
+}
+```
+
+ The `ReposViewModelState` enum represents the different states of the repository fetching process, including loading, finished loading, and error states. 
+
+ ```swift 
+enum ReposViewModelState: Equatable {
+  case loading
+  case finishedLoading
+  case error(ReposViewModelError)
+}
+ ```
+
+The `Section` enum defines a single `case repositories` used to categorize the repository items within the collection view.
+```swift
+enum Section { case repositories }
+```
+
+- `ReposViewModelTests`: A unit test class that verifies the functionality of ReposViewModel.
+```swift
+func testFetchRepositoriesSuccess()
+func testFetchRepositoriesFailure()
+func testUserNameUpdates()
+```
+
+
+
+#### ViewController
+- **Repository ViewController**
+
+The `ReposViewController` class is a view controller that manages the display of a collection view, binds to the `ReposViewModel`, and updates the UI based on the state of the repository fetching process.
+
+```swift
+final class ReposViewController: UIViewController {
+  
+  private typealias DataSource ..
+  private typealias Snapshot .. 
+
+  init(viewModel: ReposViewModel) { .. }
+
+  override func viewDidLoad() {
+    ..
+    setupViews()
+    configureDataSource()
+    bindViewModel()
+  }
+
+  ..
+}
+```
+
+#### View
+
+- **ListView**
+
+The `ListView` class is a custom `UIView` subclass that sets up and manages a `UICollectionView` and a `UIActivityIndicatorView`, providing the layout and handling the loading states for displaying a list of items.
+
+```swift
+final class ListView: UIView {
+
+  lazy var collectionView = UICollectionView( .. )
+  lazy var activityIndicationView = UIActivityIndicatorView( .. )
+  
+  ..
+```
+- **RepositoryCollectionViewCell**
+
+The `RepositoryCollectionViewCell` class is a custom `UICollectionViewCell` subclass designed to display the details of a repository, including its name and description, within a collection view.
+
+```swift
+final class RepositoryCollectionViewCell: UICollectionViewCell {
+  
+  static let identifier = "RepositoryCollectionViewCell"
+  private lazy var nameLabel: UILabel = { .. }()
+  private lazy var descriptionLabel: UILabel = { .. }()
+
+  ..
+}
+```
