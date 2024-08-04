@@ -29,6 +29,7 @@ final class ReposViewController: UIViewController {
     setupViews()
     configureDataSource()
     bindViewModel()
+    contentView.collectionView.delegate = self 
   }
   
   @objc func searchButtonTapped() {
@@ -123,5 +124,14 @@ private extension ReposViewController {
     let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
+  }
+}
+
+extension ReposViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let repository = dataSource?.itemIdentifier(for: indexPath) else { return }
+    let detailViewModel = RepositoryDetailViewModel(repository: repository)
+    let detailViewController = RepositoryDetailViewController(viewModel: detailViewModel)
+    navigationController?.pushViewController(detailViewController, animated: true)
   }
 }
