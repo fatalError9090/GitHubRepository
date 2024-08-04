@@ -2,7 +2,17 @@ import UIKit
 
 final class ListView: UIView {
 
-  lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+  lazy var collectionView: UICollectionView = {
+    let layout = createLayout()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.register(
+      RepositorySectionHeaderView.self,
+      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+      withReuseIdentifier: RepositorySectionHeaderView.reuseIdentifier
+    )
+    return collectionView
+  }()
   lazy var activityIndicationView = UIActivityIndicatorView(style: .medium)
   
   init() {
@@ -38,13 +48,13 @@ final class ListView: UIView {
   }
   
   private func setUpConstraints() {
-    let defaultMargin: CGFloat = 16.0
+    let defaultMargin: CGFloat = 8.0
     
     NSLayoutConstraint.activate([
       collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: defaultMargin),
       collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -defaultMargin),
       collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: defaultMargin),
+      collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 16.0),
       
       activityIndicationView.centerXAnchor.constraint(equalTo: centerXAnchor),
       activityIndicationView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -66,8 +76,19 @@ final class ListView: UIView {
     
     let section = NSCollectionLayoutSection(group: group)
     section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-    section.interGroupSpacing = 5
+    section.interGroupSpacing = 20
     
+    let headerSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1),
+      heightDimension: .estimated(44)
+    )
+    let header = NSCollectionLayoutBoundarySupplementaryItem(
+      layoutSize: headerSize,
+      elementKind: UICollectionView.elementKindSectionHeader,
+      alignment: .top
+    )
+    section.boundarySupplementaryItems = [header]
+
     return UICollectionViewCompositionalLayout(section: section)
   }
 }

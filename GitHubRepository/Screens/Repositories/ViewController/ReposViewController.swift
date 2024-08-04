@@ -48,6 +48,17 @@ private extension ReposViewController {
       cell.configure(with: repository)
       return cell
     }
+    
+    dataSource?.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+      guard kind == UICollectionView.elementKindSectionHeader else { return nil }
+      guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RepositorySectionHeaderView.reuseIdentifier, for: indexPath) as? RepositorySectionHeaderView else {
+        return nil
+      }
+      // Set the header title based on the section type
+      let section = self.dataSource?.snapshot().sectionIdentifiers[indexPath.section]
+      headerView.configure(with: section?.title ?? "")
+      return headerView
+    }
   }
 
   func bindViewModel() {
