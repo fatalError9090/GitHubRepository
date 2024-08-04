@@ -70,7 +70,7 @@ func testFetchRepositoriesInvalidURL()
 func testFetchRepositoriesEmptyUser()
 func testFetchRepositoriesDecodingError()
 ```
-
+---
 #### Model
 - **Repository Model**
 
@@ -83,7 +83,7 @@ struct Repository: Codable {
   let description: String?
 }
 ```
-
+---
 #### ViewModel
 - **Repository ViewModel**
 
@@ -128,7 +128,7 @@ func testFetchRepositoriesFailure()
 func testUserNameUpdates()
 ```
 
-
+---
 
 #### ViewController
 - **Repository ViewController**
@@ -153,7 +153,7 @@ final class ReposViewController: UIViewController {
   ..
 }
 ```
-
+---
 #### View
 
 - **ListView**
@@ -182,3 +182,4 @@ final class RepositoryCollectionViewCell: UICollectionViewCell {
   ..
 }
 ```
+---
