@@ -32,8 +32,22 @@ class GitHubServiceTests: XCTestCase {
   func testFetchRepositoriesSuccess() {
     let jsonData = """
         [
-            {"id": 1, "name": "Repo1", "description": "Description1"},
-            {"id": 2, "name": "Repo2", "description": "Description2"}
+            {
+                "id": 1,
+                "name": "Repo1",
+                "full_name": "User/Repo1",
+                "description": "Description1",
+                "stargazers_count": 10,
+                "language": "Swift"
+            },
+            {
+                "id": 2,
+                "name": "Repo2",
+                "full_name": "User/Repo2",
+                "description": "Description2",
+                "stargazers_count": 20,
+                "language": "Objective-C"
+            }
         ]
         """.data(using: .utf8)!
     

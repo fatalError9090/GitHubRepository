@@ -24,7 +24,7 @@ final class ReposViewModelTests: XCTestCase {
   
   func testFetchRepositoriesSuccess() {
     // Given
-    let repositories = [Repository(id: 1, name: "Repo1", description: "Description1")]
+    let repositories = [Repository(id: 1, name: "Repo1", fullName: "Repo1", description: "Description1", stargazersCount: 12, language: "swift")]
     let expectation = XCTestExpectation(description: "State should be finishedLoading and repositories should be set")
     
     // Observe changes

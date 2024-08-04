@@ -23,6 +23,11 @@
 		9392A81D2C5ED9F30015DD01 /* RepositoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A81C2C5ED9F30015DD01 /* RepositoryCollectionViewCell.swift */; };
 		9392A81F2C5EE0810015DD01 /* ReposViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A81E2C5EE0810015DD01 /* ReposViewModelTests.swift */; };
 		9392A8222C5F0A480015DD01 /* RepositorySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8212C5F0A480015DD01 /* RepositorySectionHeaderView.swift */; };
+		9392A8262C6031690015DD01 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8252C6031690015DD01 /* RepositoryDetailViewController.swift */; };
+		9392A8292C60318B0015DD01 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8282C60318B0015DD01 /* RepositoryDetailView.swift */; };
+		9392A82C2C6032650015DD01 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A82B2C6032650015DD01 /* RepositoryDetailViewModel.swift */; };
+		9392A82E2C6037920015DD01 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A82D2C6037920015DD01 /* String+Extension.swift */; };
+		9392A8322C6040920015DD01 /* RepositoryDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		9392A81C2C5ED9F30015DD01 /* RepositoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9392A81E2C5EE0810015DD01 /* ReposViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModelTests.swift; sourceTree = "<group>"; };
 		9392A8212C5F0A480015DD01 /* RepositorySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySectionHeaderView.swift; sourceTree = "<group>"; };
+		9392A8252C6031690015DD01 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		9392A8282C60318B0015DD01 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
+		9392A82B2C6032650015DD01 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		9392A82D2C6037920015DD01 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +173,7 @@
 		9392A7EF2C5DF0B30015DD01 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9392A8232C6031490015DD01 /* Repository Details */,
 				9392A7EA2C5DF02A0015DD01 /* Repositories */,
 			);
 			path = Screens;
@@ -197,6 +208,7 @@
 		9392A7F32C5DF1020015DD01 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9392A82D2C6037920015DD01 /* String+Extension.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -240,8 +252,43 @@
 			isa = PBXGroup;
 			children = (
 				9392A81E2C5EE0810015DD01 /* ReposViewModelTests.swift */,
+				9392A8312C6040910015DD01 /* RepositoryDetailViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9392A8232C6031490015DD01 /* Repository Details */ = {
+			isa = PBXGroup;
+			children = (
+				9392A82A2C6031A00015DD01 /* ViewModel */,
+				9392A8272C60317D0015DD01 /* View */,
+				9392A8242C6031540015DD01 /* ViewController */,
+			);
+			path = "Repository Details";
+			sourceTree = "<group>";
+		};
+		9392A8242C6031540015DD01 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9392A8252C6031690015DD01 /* RepositoryDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9392A8272C60317D0015DD01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9392A8282C60318B0015DD01 /* RepositoryDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9392A82A2C6031A00015DD01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9392A82B2C6032650015DD01 /* RepositoryDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,14 +392,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9392A8222C5F0A480015DD01 /* RepositorySectionHeaderView.swift in Sources */,
+				9392A8262C6031690015DD01 /* RepositoryDetailViewController.swift in Sources */,
 				9392A7FA2C5E07090015DD01 /* GitHubServiceProtocol.swift in Sources */,
 				9392A7FD2C5E07460015DD01 /* NetworkError.swift in Sources */,
 				9392A7F72C5E06B80015DD01 /* GitHubService.swift in Sources */,
+				9392A8292C60318B0015DD01 /* RepositoryDetailView.swift in Sources */,
 				9392A7BF2C5DEBC60015DD01 /* ReposViewController.swift in Sources */,
 				9392A8162C5ED8680015DD01 /* ReposViewModel.swift in Sources */,
 				9392A81D2C5ED9F30015DD01 /* RepositoryCollectionViewCell.swift in Sources */,
+				9392A82C2C6032650015DD01 /* RepositoryDetailViewModel.swift in Sources */,
 				9392A7BB2C5DEBC60015DD01 /* AppDelegate.swift in Sources */,
 				9392A7BD2C5DEBC60015DD01 /* SceneDelegate.swift in Sources */,
+				9392A82E2C6037920015DD01 /* String+Extension.swift in Sources */,
 				9392A7F52C5E06580015DD01 /* Repository.swift in Sources */,
 				9392A8182C5ED9750015DD01 /* ListView.swift in Sources */,
 			);
@@ -363,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9392A81F2C5EE0810015DD01 /* ReposViewModelTests.swift in Sources */,
+				9392A8322C6040920015DD01 /* RepositoryDetailViewModelTests.swift in Sources */,
 				9392A7FF2C5E0F000015DD01 /* GitHubServiceTests.swift in Sources */,
 				9392A8042C5E0FCA0015DD01 /* URLProtocolMock.swift in Sources */,
 			);
