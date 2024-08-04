@@ -30,6 +30,20 @@ final class ReposViewController: UIViewController {
     configureDataSource()
     bindViewModel()
   }
+  
+  @objc func searchButtonTapped() {
+    let alertController = UIAlertController(title: "Search User", message: "Enter GitHub username", preferredStyle: .alert)
+    alertController.addTextField { textField in
+      textField.placeholder = "Username"
+    }
+    let searchAction = UIAlertAction(title: "Search", style: .default) { [weak self] _ in
+      guard let username = alertController.textFields?.first?.text, !username.isEmpty else { return }
+      self?.viewModel.fetchRepositories(for: username)
+    }
+    alertController.addAction(searchAction)
+    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    present(alertController, animated: true, completion: nil)
+  }
 }
 
 private extension ReposViewController {
@@ -38,6 +52,7 @@ private extension ReposViewController {
     view.backgroundColor = .systemBackground
     navigationController?.navigationBar.prefersLargeTitles = true
     contentView.collectionView.register(RepositoryCollectionViewCell.self, forCellWithReuseIdentifier: RepositoryCollectionViewCell.identifier)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchButtonTapped))
   }
 
   func configureDataSource() {
