@@ -38,6 +38,12 @@ final class RepositoryCollectionViewCell: UICollectionViewCell {
     contentView.layer.cornerRadius = 8
     contentView.layer.masksToBounds = true
     contentView.backgroundColor = UIColor(named: "backgroundColor")
+    
+    layer.shadowColor = UIColor(named: "backgroundColor")?.cgColor
+    layer.shadowOpacity = 1.0
+    layer.shadowOffset = CGSize(width: 0, height: 3)
+    layer.shadowRadius = 4
+    layer.masksToBounds = false
   }
   
   private func addSubviews() {

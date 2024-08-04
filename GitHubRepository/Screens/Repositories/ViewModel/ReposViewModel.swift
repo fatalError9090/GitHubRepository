@@ -13,7 +13,16 @@ enum ReposViewModelState: Equatable {
 
 @MainActor
 final class ReposViewModel: ObservableObject {
-  enum Section { case repositories }
+  
+  enum Section: CaseIterable {
+    case repositories
+    
+    var title: String {
+      switch self {
+      case .repositories: "Repositories"
+      }
+    }
+  }
   
   private let reposService: GitHubServiceProtocol
   private var subscriptions = Set<AnyCancellable>()
