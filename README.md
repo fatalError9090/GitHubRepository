@@ -45,6 +45,12 @@ Here is the branching strategy for this project:
 > The final version for this project's requirements is in `release-candidate-1` and has been merged to `main`.
 > Every new version will be added in a new `release-candidate-x` branch, which will then be merged to `main`.
 
+> [!IMPORTANT]  
+> Checkout `main` branch to see `Senior iOS Developer Test Task`.
+
+> [!NOTE]  
+> Extra features added (like `Search Repositories by Username`) can be found on `development` branch.
+
 ## Features
 
 ### 1. Repositories
