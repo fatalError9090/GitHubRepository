@@ -192,3 +192,12 @@ final class RepositoryCollectionViewCell: UICollectionViewCell {
 }
 ```
 ---
+
+
+### 2. Search Repositories by Username
+
+This project includes a search functionality that allows users to search for repositories of a specific GitHub user. By tapping the search button in the navigation bar, users can enter a GitHub username and view the repositories associated with that user. 
+
+|  Default Username | Search Username Alert  | Searched Username |
+|---|---|---|
+| ![defaultUsername](images/defaultUsername.png) | ![searchAlert](images/searchAlert.png)| ![searchedUsername](images/searchedUsername.png)|
