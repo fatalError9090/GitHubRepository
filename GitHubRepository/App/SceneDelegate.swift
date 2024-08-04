@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
-    let reposViewController = ReposViewController()
+    let reposViewModel = ReposViewModel(reposService: GitHubService())
+    let reposViewController = ReposViewController(viewModel: reposViewModel)
            
     let window = UIWindow(windowScene: windowScene)
     window.rootViewController = UINavigationController(rootViewController: reposViewController)
