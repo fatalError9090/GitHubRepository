@@ -18,7 +18,8 @@ final class RepositoryDetailViewModelTests: XCTestCase {
             fullName: "TestUser/TestRepo",
             description: "This is a test repository",
             stargazersCount: 123,
-            language: "Swift"
+            language: "Swift",
+            isFavorite: false
         )
         
         viewModel = RepositoryDetailViewModel(repository: repository)
@@ -131,4 +132,52 @@ final class RepositoryDetailViewModelTests: XCTestCase {
         
         wait(for: [fullNameExpectation, descriptionExpectation, languageExpectation, starsExpectation], timeout: 1.0)
     }
+  
+  func testToggleFavorite() {
+    let expectation = XCTestExpectation(description: "Favorite status should toggle")
+    
+    viewModel.$isFavorite
+      .dropFirst() // ignore the initial value
+      .sink { isFavorite in
+        XCTAssertEqual(isFavorite, true)
+        expectation.fulfill()
+      }
+      .store(in: &subscriptions)
+    
+    viewModel.toggleFavorite()
+    
+    wait(for: [expectation], timeout: 1.0)
+    XCTAssertTrue(viewModel.isFavorite)
+    XCTAssertTrue(viewModel.getRepository().isFavorite)
+  }
+  
+  func testToggleFavoriteTwice() {
+    let expectation = XCTestExpectation(description: "Favorite status should toggle twice")
+    
+    viewModel.$isFavorite
+      .dropFirst(2) // ignore the initial value and the first toggle
+      .sink { isFavorite in
+        XCTAssertEqual(isFavorite, false)
+        expectation.fulfill()
+      }
+      .store(in: &subscriptions)
+    
+    viewModel.toggleFavorite()
+    viewModel.toggleFavorite()
+    
+    wait(for: [expectation], timeout: 1.0)
+    XCTAssertFalse(viewModel.isFavorite)
+    XCTAssertFalse(viewModel.getRepository().isFavorite)
+  }
+  
+  func testGetRepository() {
+    let fetchedRepository = viewModel.getRepository()
+    XCTAssertEqual(fetchedRepository.id, repository.id)
+    XCTAssertEqual(fetchedRepository.name, repository.name)
+    XCTAssertEqual(fetchedRepository.fullName, repository.fullName)
+    XCTAssertEqual(fetchedRepository.description, repository.description)
+    XCTAssertEqual(fetchedRepository.stargazersCount, repository.stargazersCount)
+    XCTAssertEqual(fetchedRepository.language, repository.language)
+    XCTAssertEqual(fetchedRepository.isFavorite, repository.isFavorite)
+  }
 }

@@ -90,6 +90,46 @@ final class ReposViewModelTests: XCTestCase {
     // Then
     XCTAssertEqual(viewModel.userName, userName)
   }
+  
+  func testUpdateRepository() {
+    // Given
+    let repository = Repository(id: 1, name: "Repo1", fullName: "Repo1", description: "Description1", stargazersCount: 12, language: "swift")
+    let updatedRepository = Repository(id: 1, name: "Repo1", fullName: "Repo1", description: "Updated Description", stargazersCount: 12, language: "swift", isFavorite: true)
+    let initialExpectation = XCTestExpectation(description: "Initial repository should be set")
+    let updateExpectation = XCTestExpectation(description: "Repository should be updated")
+    
+    // Initial state
+    viewModel.fetchRepositories(for: "GitHubRepositoryTest")
+    reposService.repositoriesPublisherSubject.send([repository])
+    
+    viewModel.$repositories
+      .dropFirst()
+      .sink { repos in
+        if repos.first?.description == "Description1" {
+          initialExpectation.fulfill()
+        }
+      }
+      .store(in: &subscriptions)
+    
+    wait(for: [initialExpectation], timeout: 1.0)
+    
+    viewModel.$repositories
+      .dropFirst()
+      .sink { repos in
+        if repos.first?.description == "Updated Description", repos.first?.isFavorite == true {
+          updateExpectation.fulfill()
+        }
+      }
+      .store(in: &subscriptions)
+    
+    // When
+    viewModel.updateRepository(updatedRepository)
+    
+    // Then
+    wait(for: [updateExpectation], timeout: 1.0)
+    XCTAssertEqual(viewModel.repositories.first?.description, "Updated Description")
+    XCTAssertEqual(viewModel.repositories.first?.isFavorite, true)
+  }
 }
 
 // Mock Service
