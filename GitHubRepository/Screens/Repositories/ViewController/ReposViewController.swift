@@ -111,8 +111,13 @@ private extension ReposViewController {
   func updateSections() {
     guard let dataSource = dataSource else { return }
     var snapshot = Snapshot()
+    let favorites = viewModel.repositories.filter { $0.isFavorite }
+    if !favorites.isEmpty {
+      snapshot.appendSections([.favorites])
+      snapshot.appendItems(favorites)
+    }
     snapshot.appendSections([.repositories])
-    snapshot.appendItems(viewModel.repositories)
+    snapshot.appendItems(viewModel.repositories.filter { !$0.isFavorite })
     dataSource.apply(snapshot, animatingDifferences: true)
   }
 
@@ -132,6 +137,9 @@ extension ReposViewController: UICollectionViewDelegate {
     guard let repository = dataSource?.itemIdentifier(for: indexPath) else { return }
     let detailViewModel = RepositoryDetailViewModel(repository: repository)
     let detailViewController = RepositoryDetailViewController(viewModel: detailViewModel)
+    detailViewController.didToggleFavorite = { [weak self] updatedRepository in
+      self?.viewModel.updateRepository(updatedRepository)
+    }
     navigationController?.pushViewController(detailViewController, animated: true)
   }
 }
