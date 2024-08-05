@@ -15,11 +15,12 @@ enum ReposViewModelState: Equatable {
 final class ReposViewModel: ObservableObject {
   
   enum Section: CaseIterable {
-    case repositories
+    case favorites, repositories
     
     var title: String {
       switch self {
-      case .repositories: "Repositories"
+      case .favorites: "Favorites ⭐️"
+      case .repositories: "Repositories 🧵"
       }
     }
   }
@@ -41,6 +42,12 @@ final class ReposViewModel: ObservableObject {
     userName = user
     state = .loading
     reposService.fetchRepositories(for: user)
+  }
+
+  func updateRepository(_ updatedRepository: Repository) {
+    repositories = repositories.map { repo in
+      repo.id == updatedRepository.id ? updatedRepository : repo
+    }
   }
 }
 

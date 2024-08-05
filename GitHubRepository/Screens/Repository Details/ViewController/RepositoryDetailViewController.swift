@@ -7,6 +7,8 @@ final class RepositoryDetailViewController: UIViewController {
   private let detailView = RepositoryDetailView()
   private var subscriptions = Set<AnyCancellable>()
   
+  var didToggleFavorite: ((Repository) -> Void)?
+  
   init(viewModel: RepositoryDetailViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -23,7 +25,18 @@ final class RepositoryDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
+    configureNavigationBar()
     bindViewModel()
+  }
+  
+  private func configureNavigationBar() {
+    updateFavoriteButton()
+  }
+  
+  private func updateFavoriteButton() {
+    let favoriteButtonImage = viewModel.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+    let favoriteButton = UIBarButtonItem(image: favoriteButtonImage, style: .plain, target: self, action: #selector(toggleFavorite))
+    navigationItem.rightBarButtonItem = favoriteButton
   }
   
   private func bindViewModel() {
@@ -54,5 +67,17 @@ final class RepositoryDetailViewController: UIViewController {
         self?.detailView.updateStarsLabel(stars)
       }
       .store(in: &subscriptions)
+    
+    viewModel.$isFavorite
+      .receive(on: RunLoop.main)
+      .sink { [weak self] _ in
+        self?.updateFavoriteButton()
+      }
+      .store(in: &subscriptions)
+  }
+  
+  @objc private func toggleFavorite() {
+    viewModel.toggleFavorite()
+    didToggleFavorite?(viewModel.getRepository())
   }
 }
