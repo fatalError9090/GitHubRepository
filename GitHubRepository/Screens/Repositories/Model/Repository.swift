@@ -8,6 +8,7 @@ struct Repository: Codable, Hashable {
   let description: String?
   let stargazersCount: Int
   let language: String?
+  var isFavorite: Bool = false
   
   enum CodingKeys: String, CodingKey {
     case id
