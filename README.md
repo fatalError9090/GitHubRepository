@@ -49,7 +49,7 @@ Here is the branching strategy for this project:
 > Checkout `main` branch to see `Senior iOS Developer Test Task`.
 
 > [!NOTE]  
-> Extra features added (like `Search Repositories by Username`) can be found on `development` branch.
+> Extra features added (like `Search Repositories by Username`, `Repository Detail screen `, `Favourite Repository`) can be found on `development` branch.
 
 ## Features
 
