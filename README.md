@@ -201,3 +201,19 @@ This project includes a search functionality that allows users to search for rep
 |  Default Username | Search Username Alert  | Searched Username |
 |---|---|---|
 | ![defaultUsername](images/defaultUsername.png) | ![searchAlert](images/searchAlert.png)| ![searchedUsername](images/searchedUsername.png)|
+
+
+### 3. Detail Screen for Repository
+
+This project includes a repository details screen that displays detailed information about a selected repository. When a user taps on a specific repository from the list, they will be navigated to the Repository Detail screen. This screen includes information such as the repository's full name, description, programming language, and the number of stars.
+
+|  Repositories List Screen | Details Screen  | 
+|---|---|
+| ![repositoriesList](images/repositoriesScreen.png) | ![detailsSreen](images/detailsSreen.png)|
+
+In the details screen, users can see:
+
+- Full Name: The full name of the repository.
+- Description: A brief description of the repository.
+- Language: The primary programming language used in the repository.
+- Stars: The number of stars the repository has received.
