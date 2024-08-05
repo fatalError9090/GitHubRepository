@@ -217,3 +217,12 @@ In the details screen, users can see:
 - Description: A brief description of the repository.
 - Language: The primary programming language used in the repository.
 - Stars: The number of stars the repository has received.
+
+
+### 4. Favourite Repository
+
+This project includes functionality to mark repositories as favorites. Users can tap the star icon in the navigation bar on the Repository Detail screen to mark a repository as a favorite. The favorites are highlighted with a filled star icon and appear in a separate "Favorites" section on the main repositories list screen. Users can also unfavorite a repository by tapping the star icon again, which will remove it from the "Favorites" section.
+
+|  No Favourites Section| Details Screen No Fav  |  Details Screen Fav  |  Favourites Section  |
+|---|---|---|---|
+|![noFavouritesSection](images/noFavouritesSection.png) | ![detailsScreenNoFav](images/detailsScreenNoFav.png) | ![detailsScreenFav](images/detailsScreenFav.png)| ![favouritesSection](images/favouritesSection.png)|
